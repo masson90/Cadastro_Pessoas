@@ -14,10 +14,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnLimpar, btnCadastro, btnVoltar, btnFinalizar;
 
-    String nome, rg, cpf, cep;
+    String nome, rg, cpf, cep, cnpj;
 
     TextView edNome  , edRg  , edCpf  , edCep  , edObs, edCNPJ;
-    //TextView edNomepj, edRgpj, edCpfpj, edCeppj, edObspj, edCNPJ;
 
     RadioButton rbPessoaJuridica, rbPessoaFisica;
     RadioGroup rgTipoPessoa;
@@ -180,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         edCep.setText(cep);
 
         edCNPJ = (TextView) findViewById(R.id.edCNPJ);
+        cnpj = edCNPJ.getText().toString();
         edObs = (TextView) findViewById(R.id.edObspj);
 
 
@@ -196,11 +196,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(edNome.length() < 2 || edRg.length() < 2 || edCpf.length() < 2 || edCep.length() < 2 || edCNPJ.length() < 3)
+                if(cnpj.length() < 3)
                 {
                     AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                     alert.setTitle(edNome.getText() + " Cadastrado");
-                    alert.setMessage("CPF: " + edCpf.getText() + "\n" + "RG: " + edRg.getText() + "\n"+ "CEP:" + edCep.getText());
+                    alert.setMessage("CPF: " + edCpf.getText() + "\n" + "RG: " + edRg.getText() + "\n"+ "CEP:" + edCep.getText() + "\nCNPJ: " + edCNPJ.getText());
                     alert.setNeutralButton("Fechar",null);
                     alert.show();
                 }
